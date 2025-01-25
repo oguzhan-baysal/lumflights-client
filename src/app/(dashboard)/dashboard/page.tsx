@@ -39,7 +39,7 @@ export default function DashboardPage() {
         try {
           token = await auth.currentUser.getIdToken(true);
         } catch (_error) {
-          console.error('Token alınamadı, yeniden deneniyor...');
+          console.error('Token alınamadı, yeniden deneniyor...', _error);
           if (retryCount > 0) {
             setTimeout(() => fetchStats(retryCount - 1), 1000);
           }
