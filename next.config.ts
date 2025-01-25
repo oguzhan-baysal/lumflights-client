@@ -10,7 +10,8 @@ const nextConfig: NextConfig = {
   //   return [];
   // }
   trailingSlash: true,
-  distDir: 'out'
+  // distDir'i kaldıralım çünkü Vercel kendi output dizinini kullanıyor
+  // distDir: 'out'
 };
 
 export default nextConfig;
