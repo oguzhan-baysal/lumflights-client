@@ -47,8 +47,8 @@ export default function DashboardPage() {
         }
 
         const endpoint = user?.role === 'admin' 
-          ? 'http://localhost:3001/reservations/admin'
-          : 'http://localhost:3001/reservations';
+          ? `${process.env.NEXT_PUBLIC_API_URL}/reservations/admin`
+          : `${process.env.NEXT_PUBLIC_API_URL}/reservations`;
 
         const response = await fetch(endpoint, {
           headers: {

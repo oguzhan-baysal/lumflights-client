@@ -42,8 +42,8 @@ export default function ReservationsPage() {
       
       // Admin için tarih filtreli endpoint
       let endpoint = user?.role === 'admin' 
-        ? 'http://localhost:3001/reservations/admin'
-        : 'http://localhost:3001/reservations';
+        ? `${process.env.NEXT_PUBLIC_API_URL}/reservations/admin`
+        : `${process.env.NEXT_PUBLIC_API_URL}/reservations`;
 
       // Admin ve tarih filtreleri varsa query parametreleri ekle
       if (user?.role === 'admin' && startDate && endDate) {

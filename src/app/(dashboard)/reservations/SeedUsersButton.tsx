@@ -17,7 +17,7 @@ export default function SeedUsersButton() {
 
       const token = await auth.currentUser.getIdToken(true);
       
-      const response = await fetch('http://localhost:3001/reservations/seed-users', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/reservations/seed-users`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

@@ -4,7 +4,11 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true
   },
-  output: 'export'  // Static export için
+  output: 'export',
+  // API route'larını devre dışı bırak
+  async rewrites() {
+    return [];
+  }
 };
 
 export default nextConfig;
