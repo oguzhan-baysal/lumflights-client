@@ -23,11 +23,11 @@ interface AIRecommendation {
 interface AIRecommendationsModalProps {
   isOpen: boolean;
   onClose: () => void;
-  reservation: any;
+  reservation: Reservation | null;
 }
 
 // Dinamik öneri üreten fonksiyon
-const generateRecommendations = (reservation: any): AIRecommendation[] => {
+const generateRecommendations = (reservation: Reservation | null): AIRecommendation[] => {
   if (!reservation) return [];
   
   const recommendations: AIRecommendation[] = [];

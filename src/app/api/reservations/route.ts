@@ -14,6 +14,7 @@ export async function GET() {
 
     return NextResponse.json(reservations);
   } catch (_error) {
+    console.error('Rezervasyonlar yüklenirken hata:', _error);
     return NextResponse.json(
       { error: 'Rezervasyonlar yüklenirken bir hata oluştu' },
       { status: 500 }
@@ -23,10 +24,11 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const data = await request.json();
+    const requestData = await request.json();
     // Firestore'a kaydetme işlemi gelecek
-    return NextResponse.json({ message: 'Rezervasyon oluşturuldu' });
+    return NextResponse.json({ message: 'Rezervasyon oluşturuldu', data: requestData });
   } catch (_error) {
+    console.error('Rezervasyon oluşturulurken hata:', _error);
     return NextResponse.json(
       { error: 'Rezervasyon oluşturulurken bir hata oluştu' },
       { status: 500 }
