@@ -5,10 +5,12 @@ const nextConfig: NextConfig = {
     unoptimized: true
   },
   output: 'export',
-  // API route'larını devre dışı bırak
-  async rewrites() {
-    return [];
-  }
+  // rewrites kısmını kaldıralım çünkü static export ile uyumlu değil
+  // async rewrites() {
+  //   return [];
+  // }
+  trailingSlash: true,
+  distDir: 'out'
 };
 
 export default nextConfig;
