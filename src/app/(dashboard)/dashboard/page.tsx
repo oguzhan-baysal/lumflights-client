@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { auth } from '@/lib/firebase';
 import toast from 'react-hot-toast';
@@ -74,8 +74,8 @@ export default function DashboardPage() {
           totalPassengers,
           pendingOperations
         });
-      } catch (error) {
-        console.error('İstatistikler yüklenirken hata:', error);
+      } catch (_error) {
+        console.error('İstatistikler yüklenirken hata:', _error);
         if (retryCount > 0) {
           console.log(`Yeniden deneniyor... (${retryCount} deneme kaldı)`);
           setTimeout(() => fetchStats(retryCount - 1), 1000);

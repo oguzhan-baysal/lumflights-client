@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef, useCallback } from 'react';
-import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { auth } from '@/lib/firebase';
 import toast from 'react-hot-toast';
 import { useAuth } from '@/contexts/AuthContext';
@@ -29,13 +28,11 @@ export default function ReservationsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 5;
   const [isAIModalOpen, setIsAIModalOpen] = useState(false);
-  const animationFrameIdRef = useRef<number | undefined>(undefined);
-  const currentPositionRef = useRef<{ x: number; y: number }>({ x: 50, y: 50 });
   const [startDate, setStartDate] = useState<string>('');
   const [endDate, setEndDate] = useState<string>('');
 
   // Rezervasyonları çekme fonksiyonu
-  const fetchReservations = useCallback(async () => {
+  const fetchReservations = async () => {
     try {
       if (!auth.currentUser) {
         throw new Error('Kullanıcı oturumu bulunamadı');
@@ -97,7 +94,7 @@ export default function ReservationsPage() {
     } finally {
       setLoading(false);
     }
-  }, [user?.role, startDate, endDate]);
+  };
 
   useEffect(() => {
     if (user) {

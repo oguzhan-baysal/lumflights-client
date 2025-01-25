@@ -1,6 +1,18 @@
 'use client';
 
-import Modal from './Modal';
+// Modal kullanılmıyor ve any tiplerini düzeltelim
+
+interface Reservation {
+  id: string;
+  flightNumber: string;
+  departureDate: string;
+  arrivalDate: string;
+  passengers: Array<{
+    id: string;
+    name: string;
+    email: string;
+  }>;
+}
 
 interface AIRecommendation {
   title: string;

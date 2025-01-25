@@ -59,10 +59,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setError(null);
       await signInWithEmailAndPassword(auth, email, password);
-    } catch (err: any) {
+    } catch (err: unknown) {
       let errorMessage = 'Giriş yapılırken bir hata oluştu';
       
-      if (err.code === 'auth/invalid-credential') {
+      if (err instanceof Error && 'code' in err && err.code === 'auth/invalid-credential') {
         errorMessage = 'Email veya şifre hatalı';
       }
       

@@ -1,6 +1,5 @@
 'use client';
 
-import { useAuth } from '@/contexts/AuthContext';
 import { auth } from '@/lib/firebase';
 import { useState } from 'react';
 import toast from 'react-hot-toast';

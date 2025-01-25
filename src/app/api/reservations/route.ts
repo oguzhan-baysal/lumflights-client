@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { auth, db } from '@/lib/firebase';
+import { db } from '@/lib/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 
 export async function GET() {
@@ -13,7 +13,7 @@ export async function GET() {
     }));
 
     return NextResponse.json(reservations);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       { error: 'Rezervasyonlar yüklenirken bir hata oluştu' },
       { status: 500 }
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     const data = await request.json();
     // Firestore'a kaydetme işlemi gelecek
     return NextResponse.json({ message: 'Rezervasyon oluşturuldu' });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       { error: 'Rezervasyon oluşturulurken bir hata oluştu' },
       { status: 500 }
