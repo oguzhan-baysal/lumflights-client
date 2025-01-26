@@ -1,7 +1,7 @@
 'use client';
 
 import { initializeApp, getApps } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, connectFirestoreEmulator, enableIndexedDbPersistence } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { getAnalytics } from 'firebase/analytics';
 
@@ -24,6 +24,28 @@ if (typeof window !== 'undefined') {
 }
 
 const db = getFirestore(app);
+
+// Firestore bağlantı ayarları
+const settings = {
+  experimentalForceLongPolling: true, // WebSocket yerine long polling kullan
+  merge: true
+};
+
+// @ts-ignore - settings tipini görmezden gel
+db.settings(settings);
+
+// Offline persistence'ı etkinleştir
+if (typeof window !== 'undefined') {
+  enableIndexedDbPersistence(db)
+    .catch((err) => {
+      if (err.code === 'failed-precondition') {
+        console.warn('Offline persistence çoklu sekme açıkken çalışmaz');
+      } else if (err.code === 'unimplemented') {
+        console.warn('Tarayıcınız offline persistence desteklemiyor');
+      }
+    });
+}
+
 const auth = getAuth(app);
 
 export { db, auth, analytics }; 
