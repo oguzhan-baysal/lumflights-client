@@ -35,14 +35,13 @@ export default function LoginPage() {
 
   return (
     <main className="min-h-screen bg-white relative overflow-hidden flex items-center justify-center">
-      {/* Sabit Blob Efekti */}
+      {/* Animasyonlu Blob Efekti */}
       <div 
-        className="absolute w-[800px] h-[800px] opacity-10 pointer-events-none"
+        className="absolute w-[800px] h-[800px] opacity-10 pointer-events-none animate-blob"
         style={{
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          transition: 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
       >
         <div className="absolute w-full h-full bg-[#E11D48] rounded-full blur-[120px]"></div>
