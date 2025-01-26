@@ -23,20 +23,12 @@ if (typeof window !== 'undefined') {
   analytics = getAnalytics(app);
 }
 
+// Firestore'u özel ayarlarla başlat
 const db = getFirestore(app);
 
-// Client-side'da Firestore ayarlarını yap
+// Client-side'da persistence'ı etkinleştir
 if (typeof window !== 'undefined') {
   try {
-    // Firestore bağlantı ayarları
-    const settings = {
-      experimentalForceLongPolling: true,
-      merge: true
-    };
-
-    // @ts-expect-error - Firestore settings type definition eksik
-    db.settings(settings);
-
     // Offline persistence'ı etkinleştir
     enableIndexedDbPersistence(db).catch((err) => {
       if (err.code === 'failed-precondition') {
@@ -46,7 +38,7 @@ if (typeof window !== 'undefined') {
       }
     });
   } catch (error) {
-    console.error('Firestore ayarları yapılandırılırken hata:', error);
+    console.error('Offline persistence etkinleştirilirken hata:', error);
   }
 }
 
