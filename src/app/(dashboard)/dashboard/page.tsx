@@ -106,15 +106,15 @@ export default function DashboardPage() {
     <main className="min-h-screen bg-white relative overflow-hidden">
       {/* Sabit Blob Efekti */}
       <div 
-        className="absolute w-[600px] h-[600px] opacity-20 pointer-events-none"
+        className="absolute w-[800px] h-[800px] opacity-10 pointer-events-none"
         style={{
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+          transition: 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
       >
-        <div className="absolute w-full h-full bg-[#E11D48] rounded-full blur-[80px]"></div>
+        <div className="absolute w-full h-full bg-[#E11D48] rounded-full blur-[120px]"></div>
       </div>
 
       {/* Dashboard Content */}
