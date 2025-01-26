@@ -25,17 +25,18 @@ if (typeof window !== 'undefined') {
 
 const db = getFirestore(app);
 
-// Firestore bağlantı ayarları
-const settings = {
-  experimentalForceLongPolling: true, // WebSocket yerine long polling kullan
-  merge: true
-};
-
-// @ts-expect-error - Firestore settings type definition eksik
-db.settings(settings);
-
-// Offline persistence'ı etkinleştir
+// Client-side'da Firestore ayarlarını yap
 if (typeof window !== 'undefined') {
+  // Firestore bağlantı ayarları
+  const settings = {
+    experimentalForceLongPolling: true,
+    merge: true
+  };
+
+  // @ts-expect-error - Firestore settings type definition eksik
+  db.settings(settings);
+
+  // Offline persistence'ı etkinleştir
   enableIndexedDbPersistence(db)
     .catch((err) => {
       if (err.code === 'failed-precondition') {
