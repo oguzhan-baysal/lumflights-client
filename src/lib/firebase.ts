@@ -1,7 +1,7 @@
 'use client';
 
 import { initializeApp, getApps } from 'firebase/app';
-import { getFirestore, connectFirestoreEmulator, enableIndexedDbPersistence } from 'firebase/firestore';
+import { getFirestore, enableIndexedDbPersistence } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { getAnalytics } from 'firebase/analytics';
 
@@ -31,7 +31,7 @@ const settings = {
   merge: true
 };
 
-// @ts-ignore - settings tipini görmezden gel
+// @ts-expect-error - Firestore settings type definition eksik
 db.settings(settings);
 
 // Offline persistence'ı etkinleştir
